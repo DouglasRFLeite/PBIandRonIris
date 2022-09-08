@@ -1,17 +1,19 @@
 #Power BI and R Integration on Iris Dataset - by Douglas Rocha
 
 #Package installation
-install.packages("stringr") #for capitalization
-install.packages("ggplot2") #for plotting
+install.packages("stringr")
+install.packages("ggplot2")
 
 
-#Dataset loading - to be used on Step #1 Get Data
+#Dataset loading - to be used on Step #1 Import the Data
 dataset <- iris
 
 
 #Capitalization - to be used on Step #2 Transforming Data
 library(stringr)
-dataset$Species <- str_to_title(dataset$Species)
+library(data.table)
+dataset_cap <- data.table(dataset)
+dataset_cap$Species <- str_to_title(dataset_cap$Species)
 
 
 #Creating Area Columns - to be used on Step #3 Creating Calculated Columns
