@@ -11,20 +11,20 @@ dataset <- iris
 
 #Capitalization - to be used on Step #2 Transforming Data
 library(stringr)
-library(data.table)
-dataset_cap <- data.table(dataset)
-dataset_cap$Species <- str_to_title(dataset_cap$Species)
+dataset_cap <- dataset
+dataset_cap$Species <- str_to_title(dataset$Species)
 
 
 #Creating Area Columns - to be used on Step #3 Creating Calculated Columns
-dataset$Sepal.Area <- dataset$Sepal.Length * dataset$Sepal.Width
-dataset$Petal.Area <- dataset$Petal.Length * dataset$Petal.Width
+dataset_area <- dataset
+dataset_area$Sepal.Area <- dataset$Sepal.Length * dataset$Sepal.Width
+dataset_area$Petal.Area <- dataset$Petal.Length * dataset$Petal.Width
 
 
 #Creating Plots - to be used on Step #4 R Plots on Power BI
-library(ggplot2)
 
 #Sepal WxL
+library(ggplot2)
 ggplot(data = dataset, aes(x = Sepal.Width, y = Sepal.Length)) +
   geom_point(aes(color = Species), size = 3) +
   ggtitle("Sepal Width x Lenght") +
@@ -33,6 +33,7 @@ ggplot(data = dataset, aes(x = Sepal.Width, y = Sepal.Length)) +
   theme(title = element_text(size = 15, color = "turquoise4"))
 
 #Petal WxL
+library(ggplot2)
 ggplot(data = dataset, aes(x = Petal.Width, y = Petal.Length)) +
   geom_point(aes(color = Species), size = 3) +
   ggtitle("Petal Width x Lenght") +
@@ -41,6 +42,7 @@ ggplot(data = dataset, aes(x = Petal.Width, y = Petal.Length)) +
   theme(title = element_text(size = 15, color = "turquoise4"))
 
 #Area PetalxSepal
+library(ggplot2)
 ggplot(data = dataset, aes(x = Petal.Area, y = Sepal.Area)) +
   geom_point(aes(color = Species), size = 3) +
   ggtitle("Petal Area x Sepal Area") +
